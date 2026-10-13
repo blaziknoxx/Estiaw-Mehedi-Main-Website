@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-emerald: #087F5B;
+    --color-deep-forest: #075B46;
+    --color-fresh-green: #36A852;
+    --color-golden-yellow: #E2B52C;
+    --color-mustard: #C99516;
+    --color-warm-scarlet: #D83A3A;
+    --color-coral: #EF684F;
+    --color-teal: #159A91;
+    --color-warm-cream: #F5F3E9;
+    --color-dark-text: #17231D;
+    --color-light-text: #F7F7F2;
+    --color-canvas: #09130f;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-light-text);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+  }
+}
+
+/* Ambient Animated Mesh Gradient */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.65;
+}
+
+.mesh-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform, opacity;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.mesh-orb-1 {
+  top: -10%;
+  left: -10%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 750px;
+  max-height: 750px;
+  background: radial-gradient(circle, rgba(8, 127, 91, 0.45) 0%, rgba(7, 91, 70, 0.15) 60%, transparent 80%);
+  animation: floatOrb1 26s infinite alternate;
+}
+
+.mesh-orb-2 {
+  top: 30%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 680px;
+  max-height: 680px;
+  background: radial-gradient(circle, rgba(201, 149, 22, 0.28) 0%, rgba(226, 181, 44, 0.12) 55%, transparent 80%);
+  animation: floatOrb2 32s infinite alternate;
+}
+
+.mesh-orb-3 {
+  bottom: 5%;
+  left: 15%;
+  width: 48vw;
+  height: 48vw;
+  max-width: 640px;
+  max-height: 640px;
+  background: radial-gradient(circle, rgba(21, 154, 145, 0.35) 0%, rgba(8, 127, 91, 0.15) 60%, transparent 80%);
+  animation: floatOrb3 28s infinite alternate;
+}
+
+.mesh-orb-4 {
+  top: 70%;
+  right: 25%;
+  width: 42vw;
+  height: 42vw;
+  max-width: 550px;
+  max-height: 550px;
+  background: radial-gradient(circle, rgba(239, 104, 79, 0.18) 0%, rgba(216, 58, 58, 0.08) 50%, transparent 80%);
+  animation: floatOrb4 36s infinite alternate;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6vw, 8vh) scale(1.08); }
+  100% { transform: translate(-4vw, 12vh) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-8vw, -6vh) scale(1.1); }
+  100% { transform: translate(-4vw, 8vh) scale(0.92); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, -8vh) scale(1.05); }
+  100% { transform: translate(9vw, -3vh) scale(0.96); }
+}
+
+@keyframes floatOrb4 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6vw, -5vh) scale(1.12); }
+  100% { transform: translate(4vw, -9vh) scale(0.98); }
+}
+
+/* Liquid Glass Surfaces */
+.glass-surface {
+  background: rgba(14, 25, 20, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+}
+
+.glass-nav {
+  background: rgba(11, 20, 16, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card {
+  background: rgba(13, 24, 19, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(17, 31, 25, 0.75);
+  border-color: rgba(226, 181, 44, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 25px -8px rgba(8, 127, 91, 0.2);
+}
+
+/* Liquid Border Effect */
+.liquid-border-container {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 127, 91, 0.6),
+    rgba(226, 181, 44, 0.5),
+    rgba(239, 104, 79, 0.45),
+    rgba(21, 154, 145, 0.6),
+    rgba(8, 127, 91, 0.6)
+  );
+  background-size: 300% 300%;
+  animation: liquidShift 14s ease infinite;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 30px -12px rgba(8, 127, 91, 0.28);
+}
+
+.liquid-border-container::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: inherit;
+  background-size: inherit;
+  animation: inherit;
+  filter: blur(8px);
+  opacity: 0.35;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes liquidShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Liquid Border Inner Area */
+.liquid-inner-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(1rem - 1.5px);
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(22, 38, 30, 0.85) 0%,
+    rgba(11, 20, 16, 0.95) 70%,
+    rgba(8, 15, 12, 1) 100%
+  );
+  overflow: hidden;
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09130f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  border: 2px solid #09130f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(226, 181, 44, 0.4);
+}
+
+/* Full-Viewport 404 Experience with Dynamic Viewports & Safe Area Insets */
+.full-viewport-404 {
+  min-height: calc(100vh - 4.5rem);
+  min-height: calc(100svh - 4.5rem);
+  min-height: calc(100dvh - 4.5rem);
+  padding-top: max(1rem, calc(env(safe-area-inset-top) + 0.5rem));
+  padding-bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + 0.75rem));
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-orb {
+    animation: none !important;
+  }
+  .liquid-border-container,
+  .liquid-border-container::before {
+    animation: none !important;
+    background-position: 50% 50% !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
